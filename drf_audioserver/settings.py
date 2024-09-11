@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['drf-audioserver-e7dga8d7f8age2by.polandcentral-01.azurewebsites.net']
 
 
 # Application definition
