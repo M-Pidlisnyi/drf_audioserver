@@ -81,12 +81,12 @@ WSGI_APPLICATION = 'drf_audioserver.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mssql',
-        'NAME': os.environ.get('AZURE_DB_NAME'),
-        'USER': os.environ.get('AZURE_DB_USER'),
-        'PASSWORD': os.environ.get('AZURE_DB_PASSWORD'),
-        'HOST': "drf-audioserver-dbserver.database.windows.net",
-        'PORT': 1433
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': "localhost",
+        'PORT': 5432
     }
 }
 

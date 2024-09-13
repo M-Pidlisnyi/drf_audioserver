@@ -2,8 +2,7 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 # from django.http import  HttpResponse
-from django.views.generic import  ListView
-from django.views.generic import FormView
+from django.views.generic import  ListView, FormView, DetailView
 from rest_framework.views import APIView
 from django.urls import  reverse_lazy
 from .models import Track
@@ -38,3 +37,6 @@ class AddTrackView(FormView):
         self.model.objects.create(author = author, title = title)
 
         return super().form_valid(form)
+
+class TrackView(DetailView):
+    model = Track
