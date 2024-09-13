@@ -1,1 +1,5 @@
-<audio src="..." controls>Here be audio</audio>
+<p>{{ object.author }}</p>
+<p>{{ object.title }}</p>
+<p>{{ track.track_file.name }}</p>
+<p>{{ MEDIA_URL }}</p>
+<audio src="{{ MEDIA_URL }}{{ track.track_file.name }}" controls>Here be audio</audio>

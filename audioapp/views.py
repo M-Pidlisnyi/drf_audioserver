@@ -25,17 +25,7 @@ class AddTrackView(FormView):
     success_url = reverse_lazy("list")
 
     def form_valid(self, form):
-        file = self.request.FILES.get("file_upload")
-        full_filename:str = file.name
-
-        filename = full_filename.split(".")[0]
-        ext = full_filename.split(".")[-1]
-
-        author = filename.split("-")[0].strip()
-        title = filename.split("-")[1].strip()
-
-        self.model.objects.create(author = author, title = title)
-
+        form.save()
         return super().form_valid(form)
 
 class TrackView(DetailView):
