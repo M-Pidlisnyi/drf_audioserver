@@ -9,7 +9,7 @@ class TrackForm(forms.ModelForm):
     #track_file = forms.FileField(widget=forms.FileInput(attrs={'accept': "audio/*"}))
     class Meta:
         model = Track
-        fields = ('track_file',)
+        fields = ('track_file', )
 
     def save(self, commit=True):
         """

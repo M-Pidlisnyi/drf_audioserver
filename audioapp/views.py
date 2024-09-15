@@ -27,5 +27,15 @@ class AddTrackView(CreateView):
     template_name = 'audioapp/add_track.html'
     success_url = reverse_lazy("list")
 
+    def form_valid(self, form):
+        try:
+            return super().form_valid(form)
+        except IntegrityError:
+            return render(self.request,
+                          self.template_name,
+                          {'error': "Can't upload track. Perhaps track with such name by this author already exists?",
+                           "form": form
+                           })
+
 class TrackView(DetailView):
     model = Track
