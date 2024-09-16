@@ -31,6 +31,8 @@ class AddTrackView(CreateView):
         try:
             return super().form_valid(form)
         except IntegrityError:
+            # Integrity error may occur when unique_together constraint is violated
+            # author name and song title specifically
             return render(self.request,
                           self.template_name,
                           {'error': "Can't upload track. Perhaps track with such name by this author already exists?",

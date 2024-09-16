@@ -1,5 +1,9 @@
-<p>{{ object.author }}</p>
+{% extends 'base.html' %}
+
+
+{% block  content%}<p>{{ object.author }}</p>
 <p>{{ object.title }}</p>
 <p>{{ MEDIA_URL }}</p>
 <p>{{ track.track_file.name }}</p>
 <audio src="{{ MEDIA_URL }}{{ track.track_file.name }}" controls>Here be audio</audio>
+{% endblock %}
