@@ -13,7 +13,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv
 import os
+import socket
 load_dotenv()
+
+local_ip = socket.gethostbyname(socket.gethostname())
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +31,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['drf-audioserver-e7dga8d7f8age2by.polandcentral-01.azurewebsites.net']
+
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'desktop', local_ip, 'drf-audioserver-e7dga8d7f8age2by.polandcentral-01.azurewebsites.net']
+
 
 
 # Application definition
@@ -68,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media'
             ],
         },
     },
@@ -81,12 +87,12 @@ WSGI_APPLICATION = 'drf_audioserver.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mssql',
-        'NAME': os.environ.get('AZURE_DB_NAME'),
-        'USER': os.environ.get('AZURE_DB_USER'),
-        'PASSWORD': os.environ.get('AZURE_DB_PASSWORD'),
-        'HOST': "drf-audioserver-dbserver.database.windows.net",
-        'PORT': 1433
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': "localhost",
+        'PORT': 5432
     }
 }
 
@@ -126,6 +132,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = 'media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

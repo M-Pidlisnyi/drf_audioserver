@@ -1,5 +1,12 @@
-<ul> 
+{% extends 'base.html' %}
+
+{% block content%}<ul> 
     {% for track in track_list %}
-        <li>{{ track }}</li>
+        <li>
+            <a href="{% url 'track' track.id %}" >{{ track }}</a>
+        </li>
     {% endfor %}
 </ul>
+
+<a href="{% url 'add' %}" >Add</a>
+{% endblock %}
